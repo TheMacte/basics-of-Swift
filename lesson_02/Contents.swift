@@ -17,10 +17,7 @@ func multipleOfThree(_ number:Int) -> Bool {
 /*
 3. Создать возрастающий массив из 100 чисел.
 */
-var arr: [Int] = []
-for i in 1...100 {
-  arr.append(i)
-}
+var arr: [Int] = Array(1...100)
 
 /*
 4. Удалить из этого массива все четные числа и все числа, которые не делятся на 3.
@@ -46,6 +43,7 @@ func fibonacci(arr: inout [Float80]) -> [Float80] {
   }
   return arr
 }
+
 /*
 var arr2:[Float80]=[]
 print(fibonacci(arr: &arr2))
@@ -60,8 +58,22 @@ print(fibonacci(arr: &arr2))
     e. Повторять шаги c и d, пока возможно.
 */
 
-func prime(){
+/*
 
+НЕДАЛОСЬ... Явно нехватает знаний по работе с массивами. TODO прочитать больше про массивы и их свойства.
+
+func prime(count:Int) -> [Int] {
+  let n:Int = 10
+  var nums:[Int] = Array(2...n) //a. Выписать подряд все целые числа от двух до n (2, 3, 4, ..., n).
+  var p:Int = 2 //b. Пусть переменная p изначально равна двум — первому простому числу.
+  //var del:[Int] = [] // для отладки
+  repeat {
+    for i in stride(from: 2 * p, through: n, by: p) {// c. Зачеркнуть в списке числа от 2p до n, считая шагами по p (это будут числа, кратные p: 2p, 3p, 4p, ...).
+      nums.remove(at: nums.firstIndex(of: i)!)
+    }
+   p = 
+ } while p < nums.last! // d. Найти первое не зачёркнутое число в списке, большее, чем p, и присвоить значению переменной p это число.
+
+  return nums
 }
-
-prime()
+*/
