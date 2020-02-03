@@ -99,7 +99,6 @@ class TrunkCar: Car{
     var brand: Brand
     var engineStatus: EngineСondition
     var windowsStatus: WindowsСondition
-    
     var carryingCapacity: Int // Отличительное свойство, вместимость для загрузки
     
     init(cost: Int, brand: Brand, color: String = "black", engineStatus: EngineСondition = .stop, windowsStatus: WindowsСondition = .close, carryingCapacity: Int){
@@ -114,16 +113,48 @@ class TrunkCar: Car{
        
 }
 
-//class SportСar: Car{}
+class SportСar: Car{
+    var cost: Int
+    var color: String
+    var brand: Brand
+    var engineStatus: EngineСondition
+    var windowsStatus: WindowsСondition
+    var ckickDown: Bool = false // Отличительное свойство, вместимость для загрузки
+    
+    init(cost: Int, brand: Brand, color: String = "red", engineStatus: EngineСondition = .stop, windowsStatus: WindowsСondition = .close){
+        self.cost = cost
+        self.cost = cost
+        self.brand = brand
+        self.windowsStatus = windowsStatus
+        self.engineStatus = engineStatus
+        self.color = color
+    }
+    func action(_ action: Actions) {
+        switch action {
+          case .ckickDown:
+            ckickDown = true
+            print("Ракета!!!")
+            ckickDown = false
+          default:
+            print("Нет такой функции")
+        }
+    }
+    
+    
+}
 
 // MARK: п.4
 // Для каждого класса написать расширение, имплементирующее протокол
 extension TrunkCar: CustomStringConvertible{
     var description: String {
-        return("Грузовик, его можно загрузжать тоннами груза")
+        return("Грузовик, его можно загрузжать тоннами груза trunkUpload(Тонны) и trunkUnload(Тонны)")
     }
 }
-//extension SportСar: CustomStringConvertible{}
+extension SportСar: CustomStringConvertible{
+    var description: String {
+        return("Супер кар, умеет ускоряться ckickDown")
+    }
+}
 
 // MARK: п.5
 //Создать несколько объектов каждого класса. Применить к ним различные действия.
@@ -132,6 +163,12 @@ oleg.generalAction(.chengeStatusEngine(.work)) // Завёл двигатель
 oleg.action(.trunkUpload(300)) // Загрузился
 oleg.action(.ckickDown) // Выполнил то, что не предназначено для грузовиков
 
+var kolya = SportСar(cost: 1_000_000_000, brand: .Toyota)
+kolya.generalAction(.chengeStatusWindows(.open)) // Открыл окно
+kolya.action(.ckickDown) // Супер ускорение
+
+
 // MARK: п.6
 //Вывести сами объекты в консоль.
 print(oleg)
+print(kolya)
